@@ -49,16 +49,28 @@
 </div>
 
 <div class="cart-container">
+    @php
+        $totalAmount = 0;
+    @endphp
     @foreach($cartProducts as $cartProduct)
         <div class="cart-item">
             <img src="{{ $cartProduct->image }}" alt="{{ $cartProduct->title }}">
             <div>
                 <h3>{{ $cartProduct->title }}</h3>
                 <p>${{ $cartProduct->price }}</p>
+                <a href="#" class="remove-item-btn" onclick="removeItem({{ $cartProduct->id }})">Remove Item</a>
             </div>
+            @php
+                $totalAmount += $cartProduct->price;
+            @endphp
         </div>
     @endforeach
 </div>
+
+<div class="total-amount">
+        <h2>Total Amount: ${{ $totalAmount }}</h2>
+</div>
+<a href="/checkout" class="checkout-btn">Checkout</a>
 
 </body>
 </html>
