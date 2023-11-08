@@ -46,7 +46,12 @@
 <body>
 
 <div class="header">
-    <h1>Demo E-mall</h1>
+    <h1>Demo <br> E-mall</h1>
+    @php
+        $cartItemCount = count(session('cart', []));
+    @endphp
+    <p>Items in Cart: {{ $cartItemCount }}</p>
+    <a class="cart-button" href="/show-cart">Show Cart</a>
 </div>
 
 <div class="product-container">
